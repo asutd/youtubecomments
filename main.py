@@ -6,7 +6,7 @@ from secrets import login
 
 class InstaBot:
     def __init__(self, username, pw):
-        print("test")
+        print("init")
         self.username = username
         self.driver = webdriver.Chrome()
         self.driver.get("https://www.instagram.com/accounts/login/")
@@ -28,6 +28,10 @@ class InstaBot:
         self.driver.find_element_by_xpath("//a[contains(@href,'/{}')]".format(self.username))\
             .click()
         sleep(2)
+        self.driver.find_element_by_xpath("//a[contains(@href,'/following')]")\
+            .click()
+        sleep(2)
+        sugs = self.driver.find_element_by_xpath('//h4[contains(text(), $sugges')
 
 bot = InstaBot(login, pw)
 bot.getUnfollowers()
